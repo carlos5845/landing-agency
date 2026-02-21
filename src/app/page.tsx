@@ -1,6 +1,7 @@
-import Image from "next/image";
+"use client";
 import Seccion from "./components/seccion";
 import Hero from "./components/hero";
+
 export default function Home() {
   return (
     <>
