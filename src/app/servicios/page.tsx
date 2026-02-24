@@ -15,23 +15,6 @@ export default function ServicesSection() {
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
-          <nav
-            aria-label="Breadcrumb"
-            className="flex mb-6 text-sm font-medium text-slate-500 dark:text-slate-400"
-          >
-            <ol className="flex items-center space-x-2">
-              <li>
-                <a className="hover:text-primary" href="#">
-                  Agencia
-                </a>
-              </li>
-              <li>
-                <ChevronRight className="w-4 h-4" />
-              </li>
-              <li className="text-primary">Nuestros Servicios Profesionales</li>
-            </ol>
-          </nav>
-
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
               Soluciones{" "}
@@ -39,7 +22,7 @@ export default function ServicesSection() {
               en Datos
             </h1>
 
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8 font-inter">
               Transformamos información compleja en decisiones estratégicas.
               Nuestra arquitectura de servicios integra cinco pilares
               fundamentales para impulsar la eficiencia y el crecimiento de su

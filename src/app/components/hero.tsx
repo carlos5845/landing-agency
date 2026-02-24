@@ -4,7 +4,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
 
@@ -100,19 +101,21 @@ export default function Hero() {
             <span className="text-primary">basadas en datos</span>
           </h1>
 
-          <p className="hero-text text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl">
+          <p className="hero-text text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl font-inter">
             Transformamos la complejidad de su información en ventajas
             competitivas. Aplicamos rigor científico y tecnología de vanguardia
             para potenciar su crecimiento.
           </p>
 
           <div className="hero-btns flex flex-col sm:flex-row gap-4">
-            <button className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2">
+            <button className="bg-primary hover:bg-primary/90 text-white px-8 py-4  font-bold text-lg transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2">
               Solicitar Consulta
-              <span className="material-icons-outlined">arrow_forward</span>
+              <span className="material-icons-outlined">
+                <ArrowRight />
+              </span>
             </button>
 
-            <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary text-slate-700 dark:text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+            <button className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary text-slate-700 dark:text-white px-8 py-4  font-bold text-lg transition-all flex items-center justify-center gap-2">
               Ver Portafolio
             </button>
           </div>

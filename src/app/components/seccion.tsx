@@ -12,6 +12,7 @@ import {
   Microscope,
   Users,
   Lightbulb,
+  ArrowRight,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,7 +48,7 @@ export default function Seccion() {
             filter: "grayscale(0%)",
             duration: 1.5,
             ease: "power4.inOut",
-          }
+          },
         )
         .from(
           ".info-badge",
@@ -58,12 +59,18 @@ export default function Seccion() {
             duration: 0.8,
             ease: "elastic.out(1, 0.5)",
           },
-          "-=0.8"
+          "-=0.8",
         )
         .from(
           ".info-text",
-          { y: 50, autoAlpha: 0, duration: 1, stagger: 0.15, ease: "power3.out" },
-          "-=1.2"
+          {
+            y: 50,
+            autoAlpha: 0,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power3.out",
+          },
+          "-=1.2",
         )
         .from(
           ".info-stat-item",
@@ -74,7 +81,7 @@ export default function Seccion() {
             stagger: 0.1,
             ease: "back.out(1.7)",
           },
-          "-=0.5"
+          "-=0.5",
         );
 
       // Animación flotante badge
@@ -109,7 +116,7 @@ export default function Seccion() {
           duration: 0.8,
           stagger: 0.1, // Stagger simple
           ease: "back.out(1.7)",
-        }
+        },
       );
 
       // 3. Animación de Metodología
@@ -137,7 +144,7 @@ export default function Seccion() {
             stagger: 0.15,
             ease: "power2.out",
           },
-          "-=0.5"
+          "-=0.5",
         )
         .from(
           ".metodo-card",
@@ -148,7 +155,7 @@ export default function Seccion() {
             stagger: 0.2,
             ease: "power2.out",
           },
-          "-=0.8"
+          "-=0.8",
         );
 
       // 4. Animación CTA
@@ -175,7 +182,7 @@ export default function Seccion() {
         ease: "none",
       });
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   return (
@@ -210,7 +217,7 @@ export default function Seccion() {
                 <span className="text-primary">mundo complejo</span>
               </h2>
               <p className="info-text text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                En DataForge, entendemos que los datos por sí solos son solo
+                En STATCONT, entendemos que los datos por sí solos son solo
                 ruido. Nuestra misión es procesar esa información a través de un
                 lente multidisciplinario para revelar oportunidades estratégicas
                 que otros pasan por alto.
@@ -374,11 +381,11 @@ export default function Seccion() {
       </section>
 
       {/* SECCIÓN CTA FINAL */}
-      <section className="seccion-cta py-20 overflow-hidden">
+      <section className="seccion-cta py-24 bg-primary text-white overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="cta-container relative bg-primary rounded-[2.5rem] p-12 lg:p-24 overflow-hidden text-center lg:text-left shadow-2xl">
+          <div className="cta-container relative bg-primary  p-12 lg:p-24 overflow-hidden text-center lg:text-left shadow-2xl">
             {/* Elemento de fondo para Parallax */}
-            <div className="cta-bg-parallax absolute -top-1/2 -right-1/2 w-[150%] h-[200%] bg-gradient-to-br from-white/10 to-transparent pointer-events-none rounded-full blur-3xl"></div>
+            <div className="cta-bg-parallax absolute -top-1/2 -right-1/2 w-[150%] h-[200%] bg-linear-to-br from-white/10 to-transparent pointer-events-none rounded-full blur-3xl"></div>
 
             <div className="relative z-10 lg:flex items-center justify-between gap-12">
               <div className="lg:w-2/3 mb-10 lg:mb-0">
@@ -391,7 +398,7 @@ export default function Seccion() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center shrink-0">
-                <button className="bg-white text-primary hover:bg-slate-50 px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl hover:scale-105 active:scale-95 ring-4 ring-white/20">
+                <button className="bg-white text-primary hover:bg-slate-50 px-10 py-5  font-bold text-lg transition-all shadow-xl hover:scale-105 active:scale-95 ring-4 ring-white/20">
                   Agendar Llamada
                 </button>
               </div>

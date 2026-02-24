@@ -3,10 +3,10 @@ export default function Footer() {
   return (
     <>
       <footer
-        className="bg-slate-900 dark:bg-background-dark pt-20 pb-10 text-slate-400"
+        className="relative bg-slate-900 dark:bg-background-dark pt-20 text-slate-400 overflow-hidden"
         id="contacto"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             {/* Logo + descripción */}
             <div>
@@ -15,7 +15,7 @@ export default function Footer() {
                   <BarChart3 className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-lg font-bold tracking-tight text-white uppercase">
-                  Data<span className="text-primary italic">Forge</span>
+                  STATCONT
                 </span>
               </div>
 
@@ -115,14 +115,13 @@ export default function Footer() {
 
                 <li className="flex gap-3">
                   <Mail className="w-4 h-4 text-primary mt-1" />
-                  <span>contacto@dataforge.com</span>
+                  <span>contacto@statcont.com</span>
                 </li>
               </ul>
             </div>
           </div>
-
-          {/* Bottom bar */}
-          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium">
+          {/* Bottom bar 
+          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium z-10 relative">
             <p>
               © 2024 DataForge Consulting Group. Todos los derechos reservados.
             </p>
@@ -138,6 +137,13 @@ export default function Footer() {
                 Cookies
               </a>
             </div>
+          </div>
+          */}
+
+          <div className="mt-20 pt-8 border-t border-slate-800 flex justify-center text-[#7abfe6]">
+            <span className="font-black text-[6rem] sm:text-[10rem] md:text-[15rem] lg:text-[20rem] xl:text-[22rem] leading-none tracking-tighter uppercase select-none opacity-20">
+              STATCONT
+            </span>
           </div>
         </div>
       </footer>
