@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -279,12 +279,16 @@ export default function SectorsPage() {
 
           <div className="flex flex-wrap justify-center gap-4">
             <button className="w-full sm:w-auto px-10 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-              Agendar Consultoría
+              <Link href="/contacto">Agendar Consultoría</Link>
             </button>
 
-            <button className="w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300">
+            <a
+              href="/GRUPO STATCONT CONSULTORIA Y ANALSIS.pdf"
+              download="GRUPO STATCONT CONSULTORIA Y ANALSIS.pdf"
+              className="w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 text-center"
+            >
               Descargar PDF de Servicios
-            </button>
+            </a>
           </div>
         </div>
       </section>

@@ -6,6 +6,8 @@ import {
   Mail,
   Phone,
   MapPin,
+  Facebook,
+  MessageCircle,
   Linkedin,
   Twitter,
   Instagram,
@@ -55,11 +57,9 @@ export default function ContactSection() {
                     Servicio de Interés
                   </label>
                   <select className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary outline-none">
-                    <option>Analítica y Visualización de Datos</option>
-                    <option>Transformación Estratégica Empresarial</option>
-                    <option>Integración Cloud y Tecnología</option>
-                    <option>Soluciones de IA y Machine Learning</option>
-                    <option>Evaluación de Riesgo Financiero</option>
+                    <option>Inteligencia y Análisis de Datos</option>
+                    <option>Evaluación Económica y Financiera</option>
+                    <option>Tecnología y Sistemas de Información</option>
                   </select>
                 </div>
 
@@ -94,16 +94,16 @@ export default function ContactSection() {
                     icon={<Mail />}
                     title="Escríbenos"
                     text="Nuestro equipo está listo para ayudarte."
-                    link="mailto:hello@datacore.agency"
-                    linkText="hello@datacore.agency"
+                    link="mailto:hello@statcont.agency"
+                    linkText="hello@statcont.agency"
                   />
 
                   <InfoBlock
                     icon={<Phone />}
                     title="Llámanos o WhatsApp"
                     text="Lunes a Viernes de 9am a 6pm."
-                    link="tel:+15550000000"
-                    linkText="+1 (555) 000-0000"
+                    link="tel:+51907930586"
+                    linkText="+51 907 930 586"
                   />
                 </div>
               </div>
@@ -117,9 +117,7 @@ export default function ContactSection() {
 
                   <div className="flex items-center gap-3">
                     <MapPin size={18} />
-                    <p className="text-sm font-medium">
-                      Nueva York • Londres • Singapur
-                    </p>
+                    <p className="text-sm font-medium">Puno - Perú</p>
                   </div>
                 </div>
 
@@ -129,9 +127,14 @@ export default function ContactSection() {
                   </h4>
 
                   <div className="flex gap-4">
-                    <Social icon={<Linkedin />} />
-                    <Social icon={<Twitter />} />
-                    <Social icon={<Instagram />} />
+                    <Social
+                      icon={<Facebook />}
+                      href="https://web.facebook.com/profile.php?id=61585577921876"
+                    />
+                    <Social
+                      icon={<MessageCircle />}
+                      href="https://wa.me/907930586"
+                    />
                   </div>
                 </div>
               </div>
@@ -152,10 +155,8 @@ export default function ContactSection() {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
             <div>
-              <h3 className="text-white text-xl font-bold mb-1">Sede Global</h3>
-              <p className="text-white/80">
-                One World Trade Center, Suite 85, Nueva York, NY
-              </p>
+              <h3 className="text-white text-xl font-bold mb-1">Sede </h3>
+              <p className="text-white/80">Puno, PERU, PE</p>
             </div>
           </div>
 
@@ -209,10 +210,12 @@ function InfoBlock({ icon, title, text, link, linkText }: any) {
   );
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Social({ icon }: any) {
+function Social({ icon, href = "#" }: any) {
   return (
     <a
-      href="#"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-all"
     >
       {icon}

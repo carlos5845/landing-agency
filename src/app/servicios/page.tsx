@@ -9,6 +9,7 @@ import {
   Globe,
   Terminal,
 } from "lucide-react";
+import Link from "next/link";
 export default function ServicesSection() {
   return (
     <>
@@ -71,12 +72,12 @@ export default function ServicesSection() {
                 </li>
               </ul>
 
-              <a
+              <Link
                 className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all"
-                href="#"
+                href="/servicios/inteligencia-analisis"
               >
                 Saber más <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
 
             {/* Pillar 2 */}
@@ -109,12 +110,12 @@ export default function ServicesSection() {
                 </li>
               </ul>
 
-              <a
+              <Link
                 className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all"
-                href="#"
+                href="/servicios/inteligencia-analisis"
               >
                 Saber más <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
 
             {/* Pillar 3 */}
@@ -147,12 +148,12 @@ export default function ServicesSection() {
                 </li>
               </ul>
 
-              <a
+              <Link
                 className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all"
-                href="#"
+                href="/servicios/evaluacion-economica-financiera"
               >
                 Saber más <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
 
             {/* Pillar 4 */}
@@ -185,12 +186,12 @@ export default function ServicesSection() {
                 </li>
               </ul>
 
-              <a
+              <Link
                 className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all"
-                href="#"
+                href="/servicios/evaluacion-economica-financiera"
               >
                 Saber más <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
 
             {/* Pillar 5 */}
@@ -208,12 +209,12 @@ export default function ServicesSection() {
                 procesos y visualización de datos en tiempo real.
               </p>
 
-              <a
+              <Link
                 className="inline-flex items-center gap-2 font-bold text-primary group-hover:gap-3 transition-all"
-                href="#"
+                href="/servicios/tecnologia-sistemas"
               >
                 Saber más <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -241,10 +242,11 @@ export default function ServicesSection() {
             </a>
 
             <a
-              className="w-full sm:w-auto px-10 py-5 bg-transparent border-2 border-white/50 text-white font-bold rounded-xl hover:bg-white/10 transition-all uppercase tracking-wider text-sm"
-              href="#"
+              className="w-full sm:w-auto px-10 py-5 bg-transparent border-2 border-white/50 text-white font-bold rounded-xl hover:bg-white/10 transition-all uppercase tracking-wider text-sm text-center"
+              href="/Brochure_STATCONT.pdf"
+              download="Brochure_STATCONT.pdf"
             >
-              Ver Folleto Corporativo
+              Descargar PDF de Servicios
             </a>
           </div>
         </div>

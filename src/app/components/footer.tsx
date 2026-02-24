@@ -1,4 +1,13 @@
-import { BarChart3, AtSign, MapPin, Phone, Mail, Globe } from "lucide-react";
+import Link from "next/link";
+import {
+  BarChart3,
+  Facebook,
+  MessageCircle,
+  MapPin,
+  Phone,
+  Mail,
+  Globe,
+} from "lucide-react";
 export default function Footer() {
   return (
     <>
@@ -27,16 +36,20 @@ export default function Footer() {
               <div className="flex gap-4">
                 <a
                   className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
-                  href="#"
+                  href="https://web.facebook.com/profile.php?id=61585577921876"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Globe className="w-5 h-5" />
+                  <Facebook className="w-5 h-5" />
                 </a>
 
                 <a
                   className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
-                  href="#"
+                  href="https://wa.me/907930586"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <AtSign className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5" />
                 </a>
               </div>
             </div>
@@ -46,24 +59,28 @@ export default function Footer() {
               <h4 className="text-white font-bold mb-8">Servicios</h4>
               <ul className="space-y-4 text-sm">
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Análisis Predictivo
-                  </a>
+                  <Link
+                    href="/servicios/inteligencia-analisis"
+                    className="hover:text-primary transition-colors"
+                  >
+                    Inteligencia y Análisis de Datos
+                  </Link>
                 </li>
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Big Data Strategy
-                  </a>
+                  <Link
+                    href="/servicios/evaluacion-economica-financiera"
+                    className="hover:text-primary transition-colors"
+                  >
+                    Evaluación Económica y Financiera
+                  </Link>
                 </li>
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Due Diligence Financiero
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Estudios de Segmentación
-                  </a>
+                  <Link
+                    href="/servicios/tecnologia-sistemas"
+                    className="hover:text-primary transition-colors"
+                  >
+                    Tecnología y Sistemas de Información
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -73,24 +90,44 @@ export default function Footer() {
               <h4 className="text-white font-bold mb-8">Compañía</h4>
               <ul className="space-y-4 text-sm">
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
+                  <Link
+                    href="/"
+                    className="hover:text-primary transition-colors"
+                  >
+                    Inicio
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/nosotros"
+                    className="hover:text-primary transition-colors"
+                  >
                     Sobre Nosotros
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
+                  <Link
+                    href="/sectores"
+                    className="hover:text-primary transition-colors"
+                  >
+                    Sectores
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/metodologia"
+                    className="hover:text-primary transition-colors"
+                  >
                     Metodología
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="hover:text-primary transition-colors" href="#">
-                    Carreras
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-primary transition-colors" href="#">
+                  <Link
+                    href="/blog"
+                    className="hover:text-primary transition-colors"
+                  >
                     Blog
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -101,21 +138,17 @@ export default function Footer() {
               <ul className="space-y-4 text-sm">
                 <li className="flex gap-3">
                   <MapPin className="w-4 h-4 text-primary mt-1" />
-                  <span>
-                    Av. de la Reforma 1240, Piso 18
-                    <br />
-                    Ciudad de México, CP 01210
-                  </span>
+                  <span>Puno - Perú</span>
                 </li>
 
                 <li className="flex gap-3">
                   <Phone className="w-4 h-4 text-primary mt-1" />
-                  <span>+52 (55) 4893 2100</span>
+                  <span>+51 907 930 586</span>
                 </li>
 
                 <li className="flex gap-3">
                   <Mail className="w-4 h-4 text-primary mt-1" />
-                  <span>contacto@statcont.com</span>
+                  <span>hello@statcont.agency</span>
                 </li>
               </ul>
             </div>

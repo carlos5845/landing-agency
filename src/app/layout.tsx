@@ -15,6 +15,9 @@ const space_grotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "STANCOF",
   description: "Landing page ",
+  icons: {
+    icon: "/logostatcont.png",
+  },
 };
 
 export default function RootLayout({

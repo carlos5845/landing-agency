@@ -88,34 +88,19 @@ export default function Navbar() {
 
   const services = [
     {
-      name: "Consultoría basada en datos",
-      href: "/servicios/consultoria-datos",
+      name: "Inteligencia y Análisis de Datos",
+      href: "/servicios/inteligencia-analisis",
       icon: <BarChart3 size={20} />,
     },
     {
-      name: "Análisis estadístico avanzado",
-      href: "/servicios/analisis-estadistico",
-      icon: <LineChart size={20} />,
-    },
-    {
-      name: "Evaluación económica y financiera",
-      href: "/servicios/evaluacion-economica",
+      name: "Evaluación Económica y Financiera",
+      href: "/servicios/evaluacion-economica-financiera",
       icon: <DollarSign size={20} />,
     },
     {
-      name: "Desarrollo de sistemas de información",
-      href: "/servicios/sistemas-informacion",
+      name: "Tecnología y Sistemas de Información",
+      href: "/servicios/tecnologia-sistemas",
       icon: <Database size={20} />,
-    },
-    {
-      name: "Estudios de mercado",
-      href: "/servicios/estudios-mercado",
-      icon: <Search size={20} />,
-    },
-    {
-      name: "Evaluación de proyectos y políticas",
-      href: "/servicios/evaluacion-proyectos",
-      icon: <ClipboardCheck size={20} />,
     },
   ];
 
@@ -156,13 +141,16 @@ export default function Navbar() {
 
             {/* Servicios Dropdown Desktop */}
             <div className="relative group">
-              <span className="nav-link text-[17px] font-semibold hover:text-primary transition-colors duration-300 py-2.5 px-4 cursor-pointer flex items-center gap-1">
+              <Link
+                href="/servicios"
+                className="nav-link text-[17px] font-semibold hover:text-primary transition-colors duration-300 py-2.5 px-4 cursor-pointer flex items-center gap-1"
+              >
                 Servicios{" "}
                 <ChevronDown
                   size={14}
                   className="group-hover:rotate-180 transition-transform"
                 />
-              </span>
+              </Link>
 
               <div className="absolute left-0 mt-0 w-80 bg-white border border-slate-200 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50 rounded-xl overflow-hidden">
                 <div className="p-2">
@@ -241,15 +229,24 @@ export default function Navbar() {
               ))}
 
               <div className="py-4 border-b border-slate-50">
-                <button
-                  onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="mobile-nav-link text-3xl font-bold text-slate-900 flex justify-between items-center w-full"
-                >
-                  Servicios{" "}
-                  <ChevronDown
-                    className={`transition-transform ${isServicesOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href="/servicios"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="mobile-nav-link text-3xl font-bold text-slate-900"
+                  >
+                    Servicios
+                  </Link>
+                  <button
+                    onClick={() => setIsServicesOpen(!isServicesOpen)}
+                    className="p-2 -mr-2"
+                  >
+                    <ChevronDown
+                      className={`transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""}`}
+                      size={28}
+                    />
+                  </button>
+                </div>
 
                 {isServicesOpen && (
                   <div className="mt-6 flex flex-col gap-4 pl-4">
