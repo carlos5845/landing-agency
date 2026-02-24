@@ -162,11 +162,11 @@ export default function SectorsPage() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="hero-title text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+            <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
               Experiencia en <span className="text-primary">cada sector.</span>
             </h1>
 
-            <p className="hero-text text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="hero-text text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
               Cerramos la brecha entre conjuntos de datos complejos e
               inteligencia accionable, brindando consultoría especializada
               adaptada a los desafíos únicos de entornos corporativos, públicos
@@ -278,11 +278,11 @@ export default function SectorsPage() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-10 py-4 bg-white text-primary font-bold rounded-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <button className="w-full sm:w-auto px-10 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
               Agendar Consultoría
             </button>
 
-            <button className="px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all duration-300">
+            <button className="w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300">
               Descargar PDF de Servicios
             </button>
           </div>
@@ -316,7 +316,7 @@ function SectionBlock({
             <div className="text-primary font-bold uppercase text-xs mb-4 tracking-widest">
               {badge}
             </div>
-            <h2 className="text-4xl font-extrabold mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-6 leading-tight">
               {title}
             </h2>
             <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg leading-relaxed">

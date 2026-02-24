@@ -50,14 +50,19 @@ export default function MethodologySection() {
           "-=0.8",
         );
 
-      // Pinning logic for Sidebar
-      ScrollTrigger.create({
-        trigger: gridRef.current,
-        start: "top 100px",
-        end: "bottom bottom",
-        pin: sidebarRef.current,
-        pinSpacing: false,
-        invalidateOnRefresh: true,
+      // Responsive matching
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 1024px)", () => {
+        // Pinning logic for Sidebar
+        ScrollTrigger.create({
+          trigger: gridRef.current,
+          start: "top 100px",
+          end: "bottom bottom",
+          pin: sidebarRef.current,
+          pinSpacing: false,
+          invalidateOnRefresh: true,
+        });
       });
 
       // Sidebar Rigor Reveal

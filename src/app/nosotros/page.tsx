@@ -124,16 +124,16 @@ export default function AboutSection() {
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <span className="nosotros-badge inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-6 tracking-wide uppercase">
+            <span className="nosotros-badge inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs sm:text-sm mb-6 tracking-wide uppercase">
               Identidad del Grupo
             </span>
 
-            <h1 className="nosotros-title text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-[1.1] mb-8">
+            <h1 className="nosotros-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white leading-[1.15] sm:leading-[1.1] mb-8">
               Pioneros del Futuro de la{" "}
               <span className="text-primary">Estrategia Basada en Datos</span>.
             </h1>
 
-            <p className="nosotros-text text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl font-inter">
+            <p className="nosotros-text text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl font-inter">
               STATCONT es una agencia consultora multidisciplinaria dedicada a
               transformar datos complejos en inteligencia accionable. Combinamos
               experiencia humana con analítica de vanguardia para navegar el
@@ -146,13 +146,13 @@ export default function AboutSection() {
       {/* Mission, Vision, Values */}
       <section className="mission-section py-24 bg-white dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {/* Mission */}
             <div className="mission-card group">
               <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-300">
                 <Rocket className="text-primary group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="text-2xl font-800 mb-4 tracking-tight">Misión</h3>
+              <h3 className="text-2xl font-bold mb-4 tracking-tight">Misión</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Empoderar a organizaciones globales mediante la entrega de
                 insights de datos de alta fidelidad que impulsen el crecimiento
@@ -166,7 +166,7 @@ export default function AboutSection() {
               <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-300">
                 <Eye className="text-primary group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="text-2xl font-800 mb-4 tracking-tight">Visión</h3>
+              <h3 className="text-2xl font-bold mb-4 tracking-tight">Visión</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Ser el referente global definitivo en consultoría
                 multidisciplinaria, donde la ciencia de datos se une con la
@@ -180,7 +180,9 @@ export default function AboutSection() {
               <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary transition-colors duration-300">
                 <ShieldCheck className="text-primary group-hover:text-white transition-colors duration-300" />
               </div>
-              <h3 className="text-2xl font-800 mb-4 tracking-tight">Valores</h3>
+              <h3 className="text-2xl font-bold mb-4 tracking-tight">
+                Valores
+              </h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                 Integridad en cada cálculo, transparencia radical, innovación
                 constante y un compromiso con soluciones centradas en las
@@ -195,13 +197,13 @@ export default function AboutSection() {
       <section className="commitment-section py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col gap-32">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="commitment-content">
-                <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">
+                <span className="text-primary font-bold tracking-widest uppercase text-xs sm:text-sm mb-4 block">
                   Nuestro Compromiso
                 </span>
 
-                <h2 className="text-4xl font-800 mb-6 tracking-tight">
+                <h2 className="text-3xl sm:text-4xl font-bold mb-6 tracking-tight">
                   El Elemento Humano en Cada Byte.
                 </h2>
 
@@ -213,15 +215,15 @@ export default function AboutSection() {
 
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
-                    <CheckCircle className="text-primary w-5 h-5" />
+                    <CheckCircle className="text-primary w-5 h-5 flex-shrink-0" />
                     Alineación estratégica personalizada
                   </li>
                   <li className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
-                    <CheckCircle className="text-primary w-5 h-5" />
+                    <CheckCircle className="text-primary w-5 h-5 flex-shrink-0" />
                     Participación continua de stakeholders
                   </li>
                   <li className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
-                    <CheckCircle className="text-primary w-5 h-5" />
+                    <CheckCircle className="text-primary w-5 h-5 flex-shrink-0" />
                     Metodología adaptable para mercados modernos
                   </li>
                 </ul>
@@ -232,9 +234,9 @@ export default function AboutSection() {
       </section>
 
       {/* Policies */}
-      <div className="policy-section grid md:grid-cols-2 gap-8 max-w-7xl mx-auto px-6 mb-24">
-        <div className="policy-card bg-white dark:bg-slate-900 p-10 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
-          <h3 className="text-2xl font-800 mb-4 tracking-tight">
+      <div className="policy-section grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto px-6 mb-24">
+        <div className="policy-card bg-white dark:bg-slate-900 p-8 sm:p-10 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
+          <h3 className="text-2xl font-bold mb-4 tracking-tight">
             Política de Calidad y Ética
           </h3>
           <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
@@ -252,8 +254,8 @@ export default function AboutSection() {
           </a>
         </div>
 
-        <div className="policy-card bg-white dark:bg-slate-900 p-10 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
-          <h3 className="text-2xl font-800 mb-4 tracking-tight">
+        <div className="policy-card bg-white dark:bg-slate-900 p-8 sm:p-10 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
+          <h3 className="text-2xl font-bold mb-4 tracking-tight">
             Confidencialidad de Datos
           </h3>
           <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
@@ -276,38 +278,38 @@ export default function AboutSection() {
       <section className="growth-section py-24 bg-primary text-white overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="growth-content max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white font-semibold text-sm mb-6 tracking-wide uppercase">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white font-semibold text-xs sm:text-sm mb-6 tracking-wide uppercase">
               Visión a Largo Plazo
             </span>
 
-            <h2 className="text-4xl md:text-5xl font-800 mb-8 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 tracking-tight">
               Crecimiento Basado en la Sostenibilidad.
             </h2>
 
-            <p className="text-xl opacity-90 leading-relaxed mb-10">
+            <p className="text-lg sm:text-xl opacity-90 leading-relaxed mb-10">
               Creemos que el verdadero crecimiento no se trata solo de ganancias
               trimestrales, sino de construir sistemas resilientes que perduren.
               Nuestro compromiso con la sostenibilidad integra responsabilidad
               ambiental con escalabilidad económica.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
               <div className="growth-stat">
-                <div className="text-4xl font-800 mb-1">2030</div>
+                <div className="text-4xl font-bold mb-1">2030</div>
                 <div className="text-sm opacity-75 uppercase tracking-widest font-bold">
                   Objetivo Cero Emisiones
                 </div>
               </div>
 
               <div className="growth-stat">
-                <div className="text-4xl font-800 mb-1">100%</div>
+                <div className="text-4xl font-bold mb-1">100%</div>
                 <div className="text-sm opacity-75 uppercase tracking-widest font-bold">
                   Nube Renovable
                 </div>
               </div>
 
               <div className="growth-stat">
-                <div className="text-4xl font-800 mb-1">50+</div>
+                <div className="text-4xl font-bold mb-1">50+</div>
                 <div className="text-sm opacity-75 uppercase tracking-widest font-bold">
                   Alianzas con ONG
                 </div>

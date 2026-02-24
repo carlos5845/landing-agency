@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
@@ -13,10 +13,16 @@ import {
   Database,
   Search,
   ClipboardCheck,
+  Menu,
+  X,
+  ChevronDown,
 } from "lucide-react";
 
 export default function Navbar() {
   const navRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useGSAP(
     () => {
@@ -55,6 +61,23 @@ export default function Navbar() {
     { scope: navRef },
   );
 
+  useGSAP(() => {
+    if (isMenuOpen) {
+      gsap.fromTo(
+        mobileMenuRef.current,
+        { x: "100%", opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+      );
+      gsap.from(".mobile-nav-link", {
+        x: 20,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.4,
+        delay: 0.2,
+      });
+    }
+  }, [isMenuOpen]);
+
   const menuItems = [
     { name: "Inicio", href: "/" },
     { name: "Nosotros", href: "/nosotros" },
@@ -63,113 +86,202 @@ export default function Navbar() {
     { name: "Contacto", href: "/contacto" },
   ];
 
+  const services = [
+    {
+      name: "Consultoría basada en datos",
+      href: "/servicios/consultoria-datos",
+      icon: <BarChart3 size={20} />,
+    },
+    {
+      name: "Análisis estadístico avanzado",
+      href: "/servicios/analisis-estadistico",
+      icon: <LineChart size={20} />,
+    },
+    {
+      name: "Evaluación económica y financiera",
+      href: "/servicios/evaluacion-economica",
+      icon: <DollarSign size={20} />,
+    },
+    {
+      name: "Desarrollo de sistemas de información",
+      href: "/servicios/sistemas-informacion",
+      icon: <Database size={20} />,
+    },
+    {
+      name: "Estudios de mercado",
+      href: "/servicios/estudios-mercado",
+      icon: <Search size={20} />,
+    },
+    {
+      name: "Evaluación de proyectos y políticas",
+      href: "/servicios/evaluacion-proyectos",
+      icon: <ClipboardCheck size={20} />,
+    },
+  ];
+
   return (
     <nav
       ref={navRef}
-      className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur  py-3"
+      className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur py-3 border-b border-slate-100"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <Image
               src="/logostatcont.png"
               alt="Logo"
-              className="w-12 h-12"
+              className="w-10 h-10 md:w-12 md:h-12"
               width={100}
               height={100}
             />
             <Link href="/">
-              <span className="text-3xl font-bold tracking-tight text-black uppercase cursor-pointer">
+              <span className="text-2xl md:text-3xl font-extrabold tracking-tighter text-black uppercase cursor-pointer">
                 STATCONT
               </span>
             </Link>
           </div>
-          {/* Links */}
-          <div className="hidden md:flex items-center text-black relative">
+
+          {/* Desktop Links */}
+          <div className="hidden lg:flex items-center text-black">
             {menuItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="nav-link text-[18px] font-semibold hover:text-primary transition-colors duration-300 py-2.5 px-5"
+                className="nav-link text-[17px] font-semibold hover:text-primary transition-colors duration-300 py-2.5 px-4"
               >
                 {item.name}
               </Link>
             ))}
 
-            {/* Servicios Dropdown */}
+            {/* Servicios Dropdown Desktop */}
             <div className="relative group">
-              <span className="nav-link text-[18px] font-semibold hover:text-primary transition-colors duration-300 py-2.5 px-5 cursor-pointer">
-                Servicios
+              <span className="nav-link text-[17px] font-semibold hover:text-primary transition-colors duration-300 py-2.5 px-4 cursor-pointer flex items-center gap-1">
+                Servicios{" "}
+                <ChevronDown
+                  size={14}
+                  className="group-hover:rotate-180 transition-transform"
+                />
               </span>
 
-              <div className="absolute left-0 mt-0 w-96 bg-white border border-slate-300 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-30">
-                <div className="absolute left-0 mt-0 w-105 bg-white border border-slate-300 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0">
-                  {/* ITEM */}
-                  <Link
-                    href="/servicios/consultoria-datos"
-                    className="flex items-center gap-4 px-[20px] py-[30px] hover:bg-slate-100 transition-colors border-b border-slate-200"
-                  >
-                    <BarChart3 size={20} />
-                    Consultoría basada en datos
-                  </Link>
-
-                  <Link
-                    href="/servicios/analisis-estadistico"
-                    className="flex items-center gap-4 px-[20px] py-[30px] hover:bg-slate-100 transition-colors border-b border-slate-200"
-                  >
-                    <LineChart size={20} />
-                    Análisis estadístico avanzado
-                  </Link>
-
-                  <Link
-                    href="/servicios/evaluacion-economica"
-                    className="flex items-center gap-4 px-[20px] py-[30px] hover:bg-slate-100 transition-colors border-b border-slate-200"
-                  >
-                    <DollarSign size={20} />
-                    Evaluación económica y financiera
-                  </Link>
-
-                  <Link
-                    href="/servicios/sistemas-informacion"
-                    className="flex items-center gap-4 px-[20px] py-[30px] hover:bg-slate-100 transition-colors border-b border-slate-200"
-                  >
-                    <Database size={20} />
-                    Desarrollo de sistemas de información
-                  </Link>
-
-                  <Link
-                    href="/servicios/estudios-mercado"
-                    className="flex items-center gap-4 px-[20px] py-[30px] hover:bg-slate-100 transition-colors border-b border-slate-200"
-                  >
-                    <Search size={20} />
-                    Estudios de mercado
-                  </Link>
-
-                  <Link
-                    href="/servicios/evaluacion-proyectos"
-                    className="flex items-center gap-4 px-[20px] py-[30px] hover:bg-slate-100 transition-colors"
-                  >
-                    <ClipboardCheck size={20} />
-                    Evaluación de proyectos y políticas
-                  </Link>
+              <div className="absolute left-0 mt-0 w-80 bg-white border border-slate-200 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50 rounded-xl overflow-hidden">
+                <div className="p-2">
+                  {services.map((service, idx) => (
+                    <Link
+                      key={idx}
+                      href={service.href}
+                      className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors rounded-lg text-sm font-medium border-b border-slate-50 last:border-0"
+                    >
+                      <div className="text-primary">{service.icon}</div>
+                      {service.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Botón */}
-          <div className="nav-button">
-            <Link
-              href="/contacto"
-              className="bg-primary hover:bg-primary/90 text-white px-6 py-3.5 font-semibold text-sm transition-all shadow-md flex gap-2"
+          {/* Botón & Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <div className="nav-button hidden sm:block">
+              <Link
+                href="/contacto"
+                className="bg-primary hover:bg-primary/90 text-white px-5 py-3 font-bold text-sm transition-all shadow-md flex items-center gap-2 rounded-xl"
+              >
+                <Send size={16} />
+                Agendar Consultoría
+              </Link>
+            </div>
+
+            <button
+              className="lg:hidden p-2 text-slate-900 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <Send size={18} />
-              Agendar Consultoría
-            </Link>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div
+          ref={mobileMenuRef}
+          className="fixed inset-0 z-[60] bg-white lg:hidden h-screen w-screen overflow-y-auto"
+        >
+          <div className="p-6">
+            <div className="flex justify-between items-center mb-10">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/logostatcont.png"
+                  alt="Logo"
+                  width={40}
+                  height={40}
+                />
+                <span className="text-2xl font-black text-black">STATCONT</span>
+              </div>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 border border-slate-200 rounded-lg"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="mobile-nav-link text-3xl font-bold text-slate-900 hover:text-primary transition-colors py-4 border-b border-slate-50"
+                >
+                  {item.name}
+                </Link>
+              ))}
+
+              <div className="py-4 border-b border-slate-50">
+                <button
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  className="mobile-nav-link text-3xl font-bold text-slate-900 flex justify-between items-center w-full"
+                >
+                  Servicios{" "}
+                  <ChevronDown
+                    className={`transition-transform ${isServicesOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {isServicesOpen && (
+                  <div className="mt-6 flex flex-col gap-4 pl-4">
+                    {services.map((service, idx) => (
+                      <Link
+                        key={idx}
+                        href={service.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="flex items-center gap-4 text-lg font-semibold text-slate-600 hover:text-primary"
+                      >
+                        <div className="text-primary">{service.icon}</div>
+                        {service.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="mt-12">
+              <Link
+                href="/contacto"
+                onClick={() => setIsMenuOpen(false)}
+                className="w-full bg-primary text-white p-6 rounded-2xl font-bold text-xl flex items-center justify-center gap-4 shadow-xl shadow-primary/20"
+              >
+                <Send size={24} />
+                Agendar Consultoría
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

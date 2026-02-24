@@ -16,7 +16,7 @@ export default function ServicesSection() {
       <section className="relative pt-20 pb-16 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
               Soluciones{" "}
               <span className="text-primary">Multidisciplinarias</span> Basadas
               en Datos
@@ -42,7 +42,7 @@ export default function ServicesSection() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Pillar 1 */}
-            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5">
+            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5">
               <div className="service-icon w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                 <Trophy className="text-primary w-8 h-8" />
               </div>
@@ -80,7 +80,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Pillar 2 */}
-            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5">
+            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5">
               <div className="service-icon w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                 <Users className="text-primary w-8 h-8" />
               </div>
@@ -118,7 +118,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Pillar 3 */}
-            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5">
+            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5">
               <div className="service-icon w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                 <Landmark className="text-primary w-8 h-8" />
               </div>
@@ -156,7 +156,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Pillar 4 */}
-            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5 lg:col-start-1 lg:col-span-1 md:col-span-1">
+            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5">
               <div className="service-icon w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                 <Globe className="text-primary w-8 h-8" />
               </div>
@@ -194,7 +194,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Pillar 5 */}
-            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5 lg:col-span-2 md:col-span-1">
+            <div className="service-card group bg-white dark:bg-slate-900/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary transition-all flex flex-col h-full shadow-sm hover:shadow-xl hover:shadow-primary/5 lg:col-span-2 md:col-span-1">
               <div className="service-icon w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
                 <Terminal className="text-primary w-8 h-8" />
               </div>
@@ -220,13 +220,13 @@ export default function ServicesSection() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-primary py-20 px-6">
+      <section className="bg-primary py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">
             ¿Listo para transformar su organización con datos?
           </h2>
 
-          <p className="text-lg mb-10 text-slate-100">
+          <p className="text-lg sm:text-xl mb-10 text-slate-100">
             Agende una consulta técnica gratuita con nuestros especialistas.
             Analizaremos sus necesidades específicas y propondremos una hoja de
             ruta personalizada.
@@ -234,14 +234,14 @@ export default function ServicesSection() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              className="w-full sm:w-auto px-10 py-4 bg-white text-primary font-bold rounded shadow-lg hover:bg-slate-50 transition-colors uppercase tracking-wider text-sm"
+              className="w-full sm:w-auto px-10 py-5 bg-white text-primary font-bold rounded-xl shadow-xl hover:bg-slate-50 transition-all hover:scale-105 active:scale-95 uppercase tracking-wider text-sm"
               href="#"
             >
               Solicitar Consultoría Técnica
             </a>
 
             <a
-              className="w-full sm:w-auto px-10 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded hover:bg-white/10 transition-colors uppercase tracking-wider text-sm"
+              className="w-full sm:w-auto px-10 py-5 bg-transparent border-2 border-white/50 text-white font-bold rounded-xl hover:bg-white/10 transition-all uppercase tracking-wider text-sm"
               href="#"
             >
               Ver Folleto Corporativo
