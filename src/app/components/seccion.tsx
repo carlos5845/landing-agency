@@ -381,9 +381,9 @@ export default function Seccion() {
       </section>
 
       {/* SECCIÓN CTA FINAL */}
-      <section className="seccion-cta py-24 bg-primary text-white overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="cta-container relative bg-primary  p-12 lg:p-24 overflow-hidden text-center lg:text-left shadow-2xl">
+      <section className="seccion-cta py-24  text-white overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+          <div className="cta-container relative bg-primary  p-12 lg:p-24 overflow-hidden text-center lg:text-left shadow-2xl rounded-2xl">
             {/* Elemento de fondo para Parallax */}
             <div className="cta-bg-parallax absolute -top-1/2 -right-1/2 w-[150%] h-[200%] bg-linear-to-br from-white/10 to-transparent pointer-events-none rounded-full blur-3xl"></div>
 
@@ -398,7 +398,7 @@ export default function Seccion() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center shrink-0">
-                <button className="bg-white text-primary hover:bg-slate-50 px-10 py-5  font-bold text-lg transition-all shadow-xl hover:scale-105 active:scale-95 ring-4 ring-white/20">
+                <button className="bg-white text-primary hover:bg-slate-50 px-10 py-5  font-bold text-lg transition-all shadow-xl hover:scale-105 active:scale-95 ring-4 ring-white/20 rounded-2xl">
                   Agendar Llamada
                 </button>
               </div>
