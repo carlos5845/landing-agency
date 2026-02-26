@@ -184,6 +184,7 @@ export default function Navbar() {
             <button
               className="lg:hidden p-2 text-slate-900 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Abrir menú"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
