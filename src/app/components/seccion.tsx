@@ -507,9 +507,10 @@ export default function Seccion() {
               image: "/bac.jpg",
             },
           ].map((project, index) => (
-            <div
+            <Link
+              href="/proximo"
               key={index}
-              className="flex-shrink-0 w-[300px] md:w-[650px] aspect-video relative rounded-3xl overflow-hidden group snap-center shadow-xl"
+              className="flex-shrink-0 w-[300px] md:w-[650px] aspect-video relative rounded-3xl overflow-hidden group snap-center shadow-xl cursor-alias"
             >
               <Image
                 src={project.image}
@@ -534,7 +535,7 @@ export default function Seccion() {
               <div className="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <ArrowRight className="w-5 h-5 -rotate-45" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

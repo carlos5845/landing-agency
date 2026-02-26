@@ -186,7 +186,7 @@ export default function Footer() {
           </div>
           */}
 
-          <div className="mt-20 pt-8 border-t border-slate-800 flex justify-center text-[#7abfe6]">
+          <div className="mt-20 pt-8 border-t border-slate-800 flex justify-center text-[#b1def8]">
             <span className="font-black text-[6rem] sm:text-[10rem] md:text-[15rem] lg:text-[20rem] xl:text-[22rem] leading-none tracking-tighter uppercase select-none opacity-20">
               STATCONT
             </span>
