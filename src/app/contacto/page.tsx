@@ -8,12 +8,45 @@ import {
   MapPin,
   Facebook,
   MessageCircle,
-  Linkedin,
-  Twitter,
-  Instagram,
+  ChevronDown,
 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
 
+/**
+ * Main Contact Section with Suspense
+ */
 export default function ContactSection() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          Cargando...
+        </div>
+      }
+    >
+      <ContactFormContent />
+    </Suspense>
+  );
+}
+
+/**
+ * Contact Form Content with pre-selection logic
+ */
+function ContactFormContent() {
+  const searchParams = useSearchParams();
+  const [selectedService, setSelectedService] = useState("");
+
+  useEffect(() => {
+    const service = searchParams.get("servicio");
+    if (service === "analisis")
+      setSelectedService("Inteligencia y Análisis de Datos");
+    if (service === "evaluacion")
+      setSelectedService("Evaluación Económica y Financiera");
+    if (service === "tecnologia")
+      setSelectedService("Tecnología y Sistemas de Información");
+  }, [searchParams]);
+
   return (
     <>
       {/* Main Content Section */}
@@ -56,11 +89,28 @@ export default function ContactSection() {
                   <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                     Servicio de Interés
                   </label>
-                  <select className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary outline-none">
-                    <option>Inteligencia y Análisis de Datos</option>
-                    <option>Evaluación Económica y Financiera</option>
-                    <option>Tecnología y Sistemas de Información</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={selectedService}
+                      onChange={(e) => setSelectedService(e.target.value)}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary outline-none appearance-none"
+                    >
+                      <option value="">Seleccione un servicio</option>
+                      <option value="Inteligencia y Análisis de Datos">
+                        Inteligencia y Análisis de Datos
+                      </option>
+                      <option value="Evaluación Económica y Financiera">
+                        Evaluación Económica y Financiera
+                      </option>
+                      <option value="Tecnología y Sistemas de Información">
+                        Tecnología y Sistemas de Información
+                      </option>
+                    </select>
+                    <ChevronDown
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+                      size={18}
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -102,8 +152,10 @@ export default function ContactSection() {
                     icon={<Phone />}
                     title="Llámanos o WhatsApp"
                     text="Lunes a Viernes de 9am a 6pm."
-                    link="tel:+51907930586"
-                    linkText="+51 907 930 586"
+                    links={[
+                      { href: "tel:+51907930586", text: "+51 907 930 586" },
+                      { href: "tel:+51944823275", text: "+51 944 823 275" },
+                    ]}
                   />
                 </div>
               </div>
@@ -134,6 +186,10 @@ export default function ContactSection() {
                     <Social
                       icon={<MessageCircle />}
                       href="https://wa.me/907930586"
+                    />
+                    <Social
+                      icon={<MessageCircle />}
+                      href="https://wa.me/944823275"
                     />
                   </div>
                 </div>
@@ -175,6 +231,7 @@ export default function ContactSection() {
 }
 
 /* Reusable Components */
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Input({ label, placeholder }: any) {
   return (
@@ -190,8 +247,9 @@ function Input({ label, placeholder }: any) {
     </div>
   );
 }
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function InfoBlock({ icon, title, text, link, linkText }: any) {
+function InfoBlock({ icon, title, text, link, linkText, links }: any) {
   return (
     <div className="flex items-start gap-4">
       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
@@ -202,13 +260,29 @@ function InfoBlock({ icon, title, text, link, linkText }: any) {
           {title}
         </h4>
         <p className="text-slate-500 dark:text-slate-400 mb-1">{text}</p>
-        <a href={link} className="text-primary font-medium hover:underline">
-          {linkText}
-        </a>
+
+        {links ? (
+          <div className="flex flex-col gap-1">
+            {links.map((l: any, i: number) => (
+              <a
+                key={i}
+                href={l.href}
+                className="text-primary font-medium hover:underline"
+              >
+                {l.text}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <a href={link} className="text-primary font-medium hover:underline">
+            {linkText}
+          </a>
+        )}
       </div>
     </div>
   );
 }
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Social({ icon, href = "#" }: any) {
   return (

@@ -106,14 +106,14 @@ export default function TecnologiaSistemasPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/contacto"
+                href="/contacto?servicio=tecnologia"
                 className="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 group"
               >
                 Solicitar solución tecnológica
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/contacto"
+                href="/contacto?servicio=tecnologia"
                 className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all flex items-center gap-2"
               >
                 <Search size={18} />
@@ -407,7 +407,7 @@ export default function TecnologiaSistemasPage() {
             Modernice su gestión con soluciones tecnológicas inteligentes
           </h2>
           <Link
-            href="/contacto"
+            href="/contacto?servicio=tecnologia"
             className="inline-flex items-center gap-3 bg-white text-primary px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 transition-transform shadow-2xl relative z-10"
           >
             Solicitar diagnóstico digital

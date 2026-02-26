@@ -4,8 +4,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
 
@@ -108,16 +108,22 @@ export default function Hero() {
           </p>
 
           <div className="hero-btns flex flex-col sm:flex-row gap-4">
-            <button className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-8 py-4 px-10 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2">
+            <Link
+              href="/contacto"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-8 py-4 px-10 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-2"
+            >
               Solicitar Consulta
               <span className="material-icons-outlined">
                 <ArrowRight />
               </span>
-            </button>
+            </Link>
 
-            <button className="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary text-slate-700 dark:text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+            <Link
+              href="#"
+              className="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary text-slate-700 dark:text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2"
+            >
               Ver Portafolio
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -44,10 +44,20 @@ export default function Footer() {
                 </a>
 
                 <a
-                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all tooltip"
                   href="https://wa.me/907930586"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="WhatsApp 1"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                </a>
+                <a
+                  className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all tooltip"
+                  href="https://wa.me/944823275"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="WhatsApp 2"
                 >
                   <MessageCircle className="w-5 h-5" />
                 </a>
@@ -143,7 +153,10 @@ export default function Footer() {
 
                 <li className="flex gap-3">
                   <Phone className="w-4 h-4 text-primary mt-1" />
-                  <span>+51 907 930 586</span>
+                  <div className="flex flex-col">
+                    <span>+51 907 930 586</span>
+                    <span>+51 944 823 275</span>
+                  </div>
                 </li>
 
                 <li className="flex gap-3">

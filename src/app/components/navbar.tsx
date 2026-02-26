@@ -88,6 +88,11 @@ export default function Navbar() {
 
   const services = [
     {
+      name: "Tecnología y Sistemas de Información",
+      href: "/servicios/tecnologia-sistemas",
+      icon: <Database size={20} />,
+    },
+    {
       name: "Inteligencia y Análisis de Datos",
       href: "/servicios/inteligencia-analisis",
       icon: <BarChart3 size={20} />,
@@ -96,11 +101,6 @@ export default function Navbar() {
       name: "Evaluación Económica y Financiera",
       href: "/servicios/evaluacion-economica-financiera",
       icon: <DollarSign size={20} />,
-    },
-    {
-      name: "Tecnología y Sistemas de Información",
-      href: "/servicios/tecnologia-sistemas",
-      icon: <Database size={20} />,
     },
   ];
 

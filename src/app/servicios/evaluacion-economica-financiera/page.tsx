@@ -108,14 +108,14 @@ export default function EvaluacionEconomicaFinancieraPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/contacto"
+                href="/contacto?servicio=evaluacion"
                 className="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 group"
               >
                 Solicitar evaluación
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/contacto"
+                href="/contacto?servicio=evaluacion"
                 className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-bold rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all flex items-center gap-2"
               >
                 <Calendar size={18} />
@@ -127,7 +127,7 @@ export default function EvaluacionEconomicaFinancieraPage() {
       </section>
 
       {/* 2. EL DESAFÍO & 3. SOLUCIÓN */}
-      <section className="py-24 px-6 relative reveal-section">
+      <section className="py-24 px-6 relative reveal-section bg-[#2c3b4d]">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 relative group overflow-hidden order-2 lg:order-1">
@@ -431,7 +431,7 @@ export default function EvaluacionEconomicaFinancieraPage() {
             el riesgo y maximice la sostenibilidad.
           </p>
           <Link
-            href="/contacto"
+            href="/contacto?servicio=evaluacion"
             className="inline-flex items-center gap-3 bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 transition-transform shadow-2xl shadow-primary/40 relative z-10"
           >
             Agendar evaluación técnica

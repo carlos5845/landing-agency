@@ -158,29 +158,33 @@ export default function Seccion() {
           "-=0.8",
         );
 
-      // 4. Animación CTA
-      gsap.from(".cta-container", {
+      // 4. Animación CTA (Refinada)
+      const tlCTA = gsap.timeline({
         scrollTrigger: {
           trigger: ".seccion-cta",
-          start: "top 85%",
+          start: "top 80%",
         },
-        scale: 0.9,
-        autoAlpha: 0,
-        y: 50,
-        duration: 1.2,
-        ease: "power3.out",
       });
 
-      gsap.to(".cta-bg-parallax", {
-        scrollTrigger: {
-          trigger: ".seccion-cta",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
-        y: 100,
-        ease: "none",
-      });
+      tlCTA
+        .from(".cta-container", {
+          scale: 0.95,
+          autoAlpha: 0,
+          y: 40,
+          duration: 1,
+          ease: "power3.out",
+        })
+        .from(
+          ".cta-title, .cta-desc, .cta-btn",
+          {
+            y: 30,
+            autoAlpha: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out",
+          },
+          "-=0.5",
+        );
     },
     { scope: containerRef },
   );
@@ -381,11 +385,11 @@ export default function Seccion() {
       </section>
 
       {/* SECCIÓN CTA FINAL */}
-      <section className="seccion-cta py-24  text-white overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="cta-container relative bg-primary  p-12 lg:p-24 overflow-hidden text-center lg:text-left shadow-2xl rounded-2xl">
+      <section className="seccion-cta py-24 text-white overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="cta-container relative bg-primary p-12 lg:p-24 overflow-hidden text-center lg:text-left shadow-2xl rounded-3xl border border-white/10">
             {/* Elemento de fondo para Parallax */}
-            <div className="cta-bg-parallax absolute -top-1/2 -right-1/2 w-[150%] h-[200%] bg-linear-to-br from-white/10 to-transparent pointer-events-none rounded-full blur-3xl"></div>
+            <div className="cta-bg-parallax absolute -top-1/2 -right-1/2 w-[150%] h-[200%] bg-[radial-gradient(circle,rgba(255,255,255,0.15)_0%,transparent_70%)] pointer-events-none rounded-full blur-3xl"></div>
 
             <div className="relative z-10 lg:flex items-center justify-between gap-12">
               <div className="lg:w-2/3 mb-10 lg:mb-0">
@@ -398,8 +402,9 @@ export default function Seccion() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center shrink-0">
-                <button className="bg-white text-primary hover:bg-slate-50 px-10 py-5  font-bold text-lg transition-all shadow-xl hover:scale-105 active:scale-95 ring-4 ring-white/20 rounded-2xl">
+                <button className="group bg-white text-primary hover:bg-slate-50 px-10 py-6 font-black text-xl rounded-xl transition-all shadow-2xl hover:scale-105 active:scale-95 ring-4 ring-white/20 flex items-center justify-center gap-3">
                   Agendar Llamada
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
