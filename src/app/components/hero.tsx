@@ -119,7 +119,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="#"
+              href="#proyectos"
               className="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary text-slate-700 dark:text-white px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2"
             >
               Ver Portafolio
