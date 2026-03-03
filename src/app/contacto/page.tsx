@@ -12,6 +12,16 @@ import {
 } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
+import { sendContactMessage } from "./actions";
+import Toast from "../components/toast";
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  company: string;
+  service: string;
+  message: string;
+}
 
 /**
  * Main Contact Section with Suspense
@@ -35,20 +45,84 @@ export default function ContactSection() {
  */
 function ContactFormContent() {
   const searchParams = useSearchParams();
-  const [selectedService, setSelectedService] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    service: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   useEffect(() => {
     const service = searchParams.get("servicio");
+    let initialService = "";
     if (service === "analisis")
-      setSelectedService("Inteligencia y Análisis de Datos");
+      initialService = "Inteligencia y Análisis de Datos";
     if (service === "evaluacion")
-      setSelectedService("Evaluación Económica y Financiera");
+      initialService = "Evaluación Económica y Financiera";
     if (service === "tecnologia")
-      setSelectedService("Tecnología y Sistemas de Información");
+      initialService = "Tecnología y Sistemas de Información";
+
+    if (initialService) {
+      setFormData((prev: ContactFormData) => ({
+        ...prev,
+        service: initialService,
+      }));
+    }
   }, [searchParams]);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev: ContactFormData) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: null, message: "" });
+
+    try {
+      const response = await sendContactMessage(formData);
+      if (response.success) {
+        setStatus({ type: "success", message: response.message });
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          service: "",
+          message: "",
+        });
+      } else {
+        setStatus({ type: "error", message: response.message });
+      }
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: "Hubo un error al enviar el mensaje. Intente de nuevo.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
+      {status.type && (
+        <Toast
+          message={status.message}
+          type={status.type}
+          onClose={() => setStatus({ type: null, message: "" })}
+        />
+      )}
       {/* Main Content Section */}
       <main className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center p-6 md:p-12">
         {/* Background Overlay */}
@@ -76,14 +150,33 @@ function ContactFormContent() {
                 </p>
               </div>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <Input label="Nombre Completo" placeholder="Juan Pérez" />
+                  <Input
+                    label="Nombre Completo"
+                    placeholder="Juan Pérez"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
                   <Input
                     label="Nombre de la Empresa"
                     placeholder="Empresa SAC"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
                   />
                 </div>
+
+                <Input
+                  label="Correo Electrónico"
+                  placeholder="juan.perez@ejemplo.com"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
 
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
@@ -91,9 +184,11 @@ function ContactFormContent() {
                   </label>
                   <div className="relative">
                     <select
-                      value={selectedService}
-                      onChange={(e) => setSelectedService(e.target.value)}
+                      name="service"
+                      value={formData.service}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary outline-none appearance-none"
+                      required
                     >
                       <option value="">Seleccione un servicio</option>
                       <option value="Inteligencia y Análisis de Datos">
@@ -118,18 +213,36 @@ function ContactFormContent() {
                     Tu Mensaje
                   </label>
                   <textarea
+                    name="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Cuéntanos sobre tu proyecto o desafío..."
                     className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary outline-none"
+                    required
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-primary text-white font-bold rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className={`w-full py-4 bg-primary text-white font-bold rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 ${
+                    isSubmitting
+                      ? "opacity-70 cursor-not-allowed"
+                      : "hover:bg-blue-700"
+                  }`}
                 >
-                  Enviar Mensaje
-                  <Send size={18} />
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      Enviar Mensaje
+                      <Send size={18} />
+                    </>
+                  )}
                 </button>
               </form>
             </div>
@@ -144,8 +257,8 @@ function ContactFormContent() {
                     icon={<Mail />}
                     title="Escríbenos"
                     text="Nuestro equipo está listo para ayudarte."
-                    link="mailto:hello@statcont.agency"
-                    linkText="hello@statcont.agency"
+                    link="mailto:martinescarlos154@gmail.com"
+                    linkText="martinescarlos154@gmail.com"
                   />
 
                   <InfoBlock
@@ -233,7 +346,7 @@ function ContactFormContent() {
 /* Reusable Components */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Input({ label, placeholder }: any) {
+function Input({ label, placeholder, name, value, onChange, required }: any) {
   return (
     <div className="space-y-2">
       <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
@@ -241,6 +354,10 @@ function Input({ label, placeholder }: any) {
       </label>
       <input
         type="text"
+        name={name}
+        value={value}
+        onChange={onChange}
+        required={required}
         placeholder={placeholder}
         className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary outline-none"
       />
