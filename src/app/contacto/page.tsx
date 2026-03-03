@@ -124,7 +124,7 @@ function ContactFormContent() {
         />
       )}
       {/* Main Content Section */}
-      <main className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center p-6 md:p-12">
+      <main className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center p-4 md:p-8 lg:p-12">
         {/* Background Overlay */}
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
           <Image
@@ -138,9 +138,9 @@ function ContactFormContent() {
         <div className="max-w-6xl w-full z-10">
           <div className="grid lg:grid-cols-12 bg-white dark:bg-slate-900 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
             {/* IZQUIERDA - FORMULARIO */}
-            <div className="lg:col-span-7 p-8 md:p-12">
+            <div className="lg:col-span-7 p-6 md:p-10 lg:p-12">
               <div className="mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
                   Contacta a Nuestros Consultores
                 </h1>
                 <p className="text-slate-500 dark:text-slate-400">
@@ -226,7 +226,7 @@ function ContactFormContent() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 bg-primary text-white font-bold rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 ${
+                  className={`w-full py-4 px-2 bg-primary text-white font-bold rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 text-sm sm:text-base ${
                     isSubmitting
                       ? "opacity-70 cursor-not-allowed"
                       : "hover:bg-blue-700"
@@ -248,7 +248,7 @@ function ContactFormContent() {
             </div>
 
             {/* DERECHA - INFORMACIÓN */}
-            <div className="lg:col-span-5 bg-slate-50 dark:bg-slate-800/50 p-8 md:p-12 border-l border-slate-200 dark:border-slate-800 flex flex-col justify-between">
+            <div className="lg:col-span-5 bg-slate-50 dark:bg-slate-800/50 p-6 md:p-10 lg:p-12 border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-slate-800 flex flex-col justify-between">
               <div>
                 <h2 className="text-2xl font-bold mb-8">Ponte en Contacto</h2>
 
@@ -384,14 +384,17 @@ function InfoBlock({ icon, title, text, link, linkText, links }: any) {
               <a
                 key={i}
                 href={l.href}
-                className="text-primary font-medium hover:underline"
+                className="text-primary font-medium hover:underline transition-all break-all text-sm sm:text-base"
               >
                 {l.text}
               </a>
             ))}
           </div>
         ) : (
-          <a href={link} className="text-primary font-medium hover:underline">
+          <a
+            href={link}
+            className="text-primary font-medium hover:underline transition-all break-all text-sm sm:text-base"
+          >
             {linkText}
           </a>
         )}

@@ -23,9 +23,11 @@ export async function sendContactMessage(formData: {
   }
 
   try {
-    // 2. Configuración del transportador (Gmail en este caso)
+    // 2. Configuración del transportador (Gmail con configuración robusta)
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true para puerto 465, false para otros puertos
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS, // Contraseña de aplicación
