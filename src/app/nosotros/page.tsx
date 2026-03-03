@@ -119,15 +119,9 @@ export default function AboutSection() {
   return (
     <div ref={container}>
       {/* Header */}
-      <header className="relative overflow-hidden pt-20 pb-24 md:pt-32 md:pb-40">
-        <div className="absolute inset-0 dot-pattern"></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="max-w-3xl">
-            <span className="nosotros-badge inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs sm:text-sm mb-6 tracking-wide uppercase">
-              Identidad del Grupo
-            </span>
-
+      <header className="relative overflow-hidden pt-16 pb-16 md:pt-20 md:pb-24 grid grid-cols-3 gap-4 max-w-7xl mx-auto h-[750PX]">
+        <div className=" mx-auto px-6 relative z-10 col-span-2">
+          <div className="">
             <h1 className="nosotros-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white leading-[1.15] sm:leading-[1.1] mb-8">
               Pioneros del Futuro de la{" "}
               <span className="text-primary">Estrategia Basada en Datos</span>.
@@ -140,6 +134,15 @@ export default function AboutSection() {
               cambiante panorama global.
             </p>
           </div>
+        </div>
+        <div className="bg-primary rounded-2xl max-w-xl">
+          <Image
+            src="/nosotros.png"
+            alt="Nosotros"
+            width={1920}
+            height={1080}
+            className="w-full h-auto object-cover"
+          />
         </div>
       </header>
 
