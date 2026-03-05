@@ -179,7 +179,7 @@
 /* CONTENIDO DEL BOTÓN */
 .boton-content {
   position: relative;
-  z-index: 1; /* 👈 ESTO ES LO QUE FALTABA */
+  z-index: 1; 
   display: flex;
   align-items: center;
   gap: 0.75rem;
