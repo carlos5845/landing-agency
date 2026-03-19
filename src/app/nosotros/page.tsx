@@ -25,21 +25,12 @@ export default function AboutSection() {
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       // Entry Header Animation
-      tl.from(".nosotros-badge", {
-        y: 20,
+      tl.from(".nosotros-title", {
+        y: 40,
         opacity: 0,
-        duration: 0.8,
+        duration: 1.2,
         delay: 0.2,
       })
-        .from(
-          ".nosotros-title",
-          {
-            y: 40,
-            opacity: 0,
-            duration: 1.2,
-          },
-          "-=0.5",
-        )
         .from(
           ".nosotros-text",
           {
@@ -48,6 +39,16 @@ export default function AboutSection() {
             duration: 1,
           },
           "-=0.8",
+        )
+        .from(
+          ".header-image",
+          {
+            x: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.6",
         );
 
       // Section: Mission/Vision/Values
@@ -119,15 +120,15 @@ export default function AboutSection() {
   return (
     <div ref={container}>
       {/* Header */}
-      <header className="relative overflow-hidden pt-16 pb-16 md:pt-20 md:pb-24 grid grid-cols-3 gap-4 max-w-7xl mx-auto h-[750PX]">
-        <div className=" mx-auto px-6 relative z-10 col-span-2">
-          <div className="">
-            <h1 className="nosotros-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white leading-[1.15] sm:leading-[1.1] mb-8">
+      <header className="relative overflow-hidden pt-8 pb-12 sm:pt-12 md:pt-16 lg:pt-20 md:pb-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-4 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative z-10 col-span-1 md:col-span-1 lg:col-span-2 flex flex-col justify-center">
+          <div>
+            <h1 className="nosotros-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-slate-900 dark:text-white leading-[1.15] sm:leading-[1.1] mb-6 sm:mb-8">
               Pioneros del Futuro de la{" "}
               <span className="text-primary">Estrategia Basada en Datos</span>.
             </h1>
 
-            <p className="nosotros-text text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl font-inter">
+            <p className="nosotros-text text-base sm:text-lg md:text-lg lg:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl font-inter">
               STATCONT es una agencia consultora multidisciplinaria dedicada a
               transformar datos complejos en inteligencia accionable. Combinamos
               experiencia humana con analítica de vanguardia para navegar el
@@ -135,15 +136,20 @@ export default function AboutSection() {
             </p>
           </div>
         </div>
-        <div className="bg-primary rounded-2xl max-w-xl">
-          <Image
-            src="/nosotros.png"
-            alt="Nosotros"
-            width={1920}
-            height={1080}
-            className="w-full h-auto object-cover"
-          />
-        </div>
+        <div className="header-image relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-900/20 shadow-lg col-span-1">
+  
+  <Image
+    src="/peaple5.png"
+    alt="Nosotros"
+    fill
+    className="object-contain object-bottom pt-2 transition-transform duration-500 hover:scale-105"
+    priority
+  />
+
+  {/* Overlay opcional para mejor contraste */}
+  <div className="absolute inset-0 bg-black/10 dark:bg-black/30"></div>
+
+</div>
       </header>
 
       {/* Mission, Vision, Values */}
@@ -222,7 +228,7 @@ export default function AboutSection() {
                     Alineación estratégica personalizada
                   </li>
                   <li className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
-                    <CheckCircle className="text-primary w-5 h-5 flex-shrink-0" />
+                    <CheckCircle className="text-primary w-5 h-5 shrink-0" />
                     Participación continua de stakeholders
                   </li>
                   <li className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">

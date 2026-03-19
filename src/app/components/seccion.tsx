@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   Sigma,
@@ -24,6 +24,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Seccion() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useGSAP(
     () => {
@@ -177,15 +179,29 @@ export default function Seccion() {
           ease: "power3.out",
         })
         .from(
-          ".seccion-proyectos .flex-shrink-0",
+          ".seccion-proyectos .relative",
           {
-            x: 100,
+            scale: 0.95,
             autoAlpha: 0,
             duration: 1,
-            stagger: 0.15,
             ease: "power4.out",
           },
           "-=0.4",
+        )
+        .fromTo(
+          ".seccion-proyectos button",
+          {
+            scale: 0,
+            autoAlpha: 0,
+          },
+          {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "back.out(1.7)",
+          },
+          "-=0.6",
         );
 
       // 5. Animación de Equipo
@@ -436,7 +452,7 @@ export default function Seccion() {
         </div>
       </section>
 
-      {/* SECCIÓN PROYECTOS (SCROLL HORIZONTAL) */}
+      {/* SECCIÓN PROYECTOS (CARRUSEL) */}
       <section
         className="seccion-proyectos py-32 bg-white dark:bg-background-dark overflow-hidden"
         id="proyectos"
@@ -450,93 +466,123 @@ export default function Seccion() {
           </h3>
         </div>
 
-        <div
-          className="flex overflow-x-auto gap-8 px-4 sm:px-6 lg:px-[10%] pb-12 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing select-none"
-          onMouseDown={(e) => {
-            const el = e.currentTarget;
-            el.classList.add("grabbing");
-            el.setAttribute("data-scroll-left", el.scrollLeft.toString());
-            el.setAttribute("data-click-x", e.pageX.toString());
-            el.style.scrollSnapType = "none";
-          }}
-          onMouseMove={(e) => {
-            const el = e.currentTarget;
-            if (!el.classList.contains("grabbing")) return;
-            e.preventDefault();
-            const clickX = parseInt(el.getAttribute("data-click-x") || "0");
-            const scrollLeft = parseInt(
-              el.getAttribute("data-scroll-left") || "0",
-            );
-            const walk = (e.pageX - clickX) * 2;
-            el.scrollLeft = scrollLeft - walk;
-          }}
-          onMouseUp={(e) => {
-            const el = e.currentTarget;
-            el.classList.remove("grabbing");
-            el.style.scrollSnapType = "x mandatory";
-          }}
-          onMouseLeave={(e) => {
-            const el = e.currentTarget;
-            el.classList.remove("grabbing");
-            el.style.scrollSnapType = "x mandatory";
-          }}
-        >
-          {[
-            {
-              title: "E-commerce Corporativo",
-              category: "Comercio Electrónico",
-              desc: "Plataformas de venta online optimizadas para conversión, escalabilidad y gestión eficiente.",
-              image: "/bac.jpg",
-            },
-            {
-              title: "Sistema de Gestión de Inventarios",
-              category: "Sistemas de Información",
-              desc: "Control centralizado de stock, pedidos y productos para operaciones comerciales eficientes.",
-              image: "/bac.jpg",
-            },
-            {
-              title: "Landing Page Estratégica",
-              category: "Marketing Digital",
-              desc: "Páginas de aterrizaje enfocadas en captación de leads y conversión de clientes.",
-              image: "/bac.jpg",
-            },
-            {
-              title: "Sistema Web Empresarial",
-              category: "Soluciones a Medida",
-              desc: "Desarrollo de sistemas web personalizados alineados a procesos y objetivos del negocio.",
-              image: "/bac.jpg",
-            },
-          ].map((project, index) => (
-            <Link
-              href="/proximo"
-              key={index}
-              className="flex-shrink-0 w-[300px] md:w-[650px] aspect-video relative rounded-3xl overflow-hidden group snap-center shadow-xl cursor-alias"
+        {/* CARRUSEL */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative">
+            {/* Contenedor del Carrusel */}
+            <div className="relative overflow-hidden rounded-3xl">
+              <div
+                ref={carouselRef}
+                className="flex transition-transform duration-500 ease-out"
+                style={{
+                  transform: `translateX(-${currentSlide * 100}%)`,
+                }}
+              >
+                {[
+                  {
+                    title: "E-commerce Corporativo",
+                    category: "Comercio Electrónico",
+                    desc: "Plataformas de venta online optimizadas para conversión, escalabilidad y gestión eficiente.",
+                    image: "/bac.jpg",
+                  },
+                  {
+                    title: "Sistema de Gestión de Inventarios",
+                    category: "Sistemas de Información",
+                    desc: "Control centralizado de stock, pedidos y productos para operaciones comerciales eficientes.",
+                    image: "/sistema.png",
+                  },
+                  {
+                    title: "Landing Page Estratégica",
+                    category: "Marketing Digital",
+                    desc: "Páginas de aterrizaje enfocadas en captación de leads y conversión de clientes.",
+                    image: "/bac.jpg",
+                  },
+                  {
+                    title: "Sistema Web Empresarial",
+                    category: "Soluciones a Medida",
+                    desc: "Desarrollo de sistemas web personalizados alineados a procesos y objetivos del negocio.",
+                    image: "/bac.jpg",
+                  },
+                ].map((project, index) => (
+                  <div key={index} className="w-full shrink-0">
+                    <Link
+                      href="/proximo"
+                      className="group relative w-full aspect-video rounded-3xl overflow-hidden shadow-xl flex"
+                    >
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500"></div>
+
+                      <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+                        <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                          {project.category}
+                        </p>
+                        <h4 className="text-2xl md:text-4xl font-black text-white mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                          {project.title}
+                        </h4>
+                        <p className="text-white/0 group-hover:text-white/80 text-sm md:text-base font-medium leading-relaxed max-w-md transition-all duration-500 delay-150 overflow-hidden line-clamp-2">
+                          {project.desc}
+                        </p>
+                      </div>
+
+                      <div className="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <ArrowRight className="w-5 h-5 -rotate-45" />
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Botones de Navegación */}
+            <button
+              onClick={() =>
+                setCurrentSlide((prev) =>
+                  prev === 0 ? 3 : prev - 1
+                )
+              }
+              className="absolute -left-6 sm:-left-16 top-1/2 -translate-y-1/2 w-14 h-14 bg-slate-900 dark:bg-slate-100 hover:bg-primary dark:hover:bg-primary rounded-full flex items-center justify-center text-white dark:text-slate-900 shadow-lg transition-all duration-300 z-10 hover:scale-110"
+              aria-label="Slide anterior"
             >
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500"></div>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <p className="text-primary-foreground/80 text-white/70 text-xs font-bold uppercase tracking-widest mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  {project.category}
-                </p>
-                <h4 className="text-2xl md:text-3xl font-black text-white mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                  {project.title}
-                </h4>
-                <p className="text-white/0 group-hover:text-white/80 text-sm font-medium leading-relaxed max-w-xs transition-all duration-500 delay-150 overflow-hidden line-clamp-2">
-                  {project.desc}
-                </p>
-              </div>
+            <button
+              onClick={() =>
+                setCurrentSlide((prev) =>
+                  prev === 3 ? 0 : prev + 1
+                )
+              }
+              className="absolute -right-6 sm:-right-16 top-1/2 -translate-y-1/2 w-14 h-14 bg-slate-900 dark:bg-slate-100 hover:bg-primary dark:hover:bg-primary rounded-full flex items-center justify-center text-white dark:text-slate-900 shadow-lg transition-all duration-300 z-10 hover:scale-110"
+              aria-label="Slide siguiente"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
 
-              <div className="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <ArrowRight className="w-5 h-5 -rotate-45" />
-              </div>
-            </Link>
-          ))}
+            {/* Indicadores de Slides */}
+            <div className="flex justify-center gap-2 mt-8">
+              {[0, 1, 2, 3].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    currentSlide === index
+                      ? "bg-primary w-8"
+                      : "bg-slate-300 dark:bg-slate-700 w-2 hover:bg-slate-400"
+                  }`}
+                  aria-label={`Ir a slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
