@@ -13,7 +13,7 @@ const space_grotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "STANCOF",
+  title: "STATCONT",
   description: "Landing page ",
   icons: {
     icon: "/logostatcont.png",
