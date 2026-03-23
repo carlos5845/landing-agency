@@ -267,7 +267,8 @@ function ContactFormContent() {
                     text="Lunes a Viernes de 9am a 6pm."
                     links={[
                       { href: "tel:+51907930586", text: "+51 907 930 586" },
-                      { href: "tel:+51944823275", text: "+51 944 823 275" },
+                      
+                       {/* href: "tel:+51944823275", text: "+51 944 823 275"*/}
                     ]}
                   />
                 </div>
